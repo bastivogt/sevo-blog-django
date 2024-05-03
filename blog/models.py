@@ -45,6 +45,7 @@ class Author(models.Model):
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
     nickname = models.CharField(max_length=100, blank=True)
+    email = models.EmailField(null=True)
     slug = models.SlugField(unique=True, default="")
 
     def get_fullname(self):
@@ -60,7 +61,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     categories = models.ManyToManyField(Category, blank=True)
     content = models.TextField()
-    excerpt = models.TextField(max_length=255)
+    excerpt = models.TextField(max_length=255, blank=True)
     featured_image = models.ForeignKey(MediaImage, on_delete=models.SET_NULL, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
