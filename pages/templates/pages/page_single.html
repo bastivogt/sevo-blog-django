@@ -6,7 +6,12 @@
 
 
 {% block content %}
-    <h1>{{ title|title }} slug: {{ slug }}</h1>
+    <h1>{{ page.title|title }}</h1>
+    <p>
+        {% autoescape off %}
+            {{ page.content }}
+        {% endautoescape %}
+    </p>
     <a href="#" class="back-link">Back</a>
     <br />
     <button class="back-link">Back</button>

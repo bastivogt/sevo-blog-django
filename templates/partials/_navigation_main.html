@@ -1,0 +1,8 @@
+<nav>
+    <ul>
+        {% for page in pages_main %}
+            <li><a href="{% url "pages-page-single-slug" slug=page.slug %}">{{ page.title }}</a></li>
+        {% endfor %}
+        <li><a href="{% url "blog-posts" %}">Blog</a></li>
+    </ul>
+</nav>
