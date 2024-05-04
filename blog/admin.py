@@ -12,7 +12,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ["title","author", "get_categories_str", "created_at", "updated_at", "get_linked_image_tag", "published"]
+    list_display = ["title", "published", "author", "get_categories_str", "created_at", "updated_at", "get_linked_image_tag"]
     list_filter = ["categories", "author", "published"]
     prepopulated_fields = {"slug": ["title",]}
     readonly_fields = ["get_linked_image_tag"]
