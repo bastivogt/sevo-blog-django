@@ -5,7 +5,7 @@ from . import models
 # Register your models here.
 
 class PageAdmin(admin.ModelAdmin):
-    list_display = ["title", "published", "index", "get_linked_image_tag"]
+    list_display = ["title", "published", "is_home", "index", "get_linked_image_tag"]
     list_filter = ["published"]
     ordering = ["index"]
     prepopulated_fields = {
@@ -19,7 +19,8 @@ class PageAdmin(admin.ModelAdmin):
         "content",
         "featured_image",
         "get_linked_image_tag",
-        "published"
+        "published",
+        "is_home"
     ]
 
 admin.site.register(models.Page, PageAdmin)

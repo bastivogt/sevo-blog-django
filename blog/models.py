@@ -36,6 +36,7 @@ class Post(models.Model):
     excerpt = models.TextField(max_length=255, blank=True)
     featured_image = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True, null=True)
     published = models.BooleanField(default=True)
+    is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

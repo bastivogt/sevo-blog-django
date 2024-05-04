@@ -12,8 +12,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ["title", "published", "author", "get_categories_str", "created_at", "updated_at", "get_linked_image_tag"]
-    list_filter = ["categories", "author", "published"]
+    list_display = ["title", "published", "is_featured", "author", "get_categories_str", "created_at", "updated_at", "get_linked_image_tag"]
+    list_filter = ["categories", "author", "published", "is_featured"]
     prepopulated_fields = {"slug": ["title",]}
     readonly_fields = ["get_linked_image_tag"]
     fields = [
@@ -25,7 +25,8 @@ class PostAdmin(admin.ModelAdmin):
         "excerpt", 
         "featured_image",
         "get_linked_image_tag",
-        "published"
+        "published", 
+        "is_featured"
     ]
     ordering = ["-created_at"]
 

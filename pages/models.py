@@ -1,3 +1,4 @@
+from typing import Iterable
 from django.db import models
 from django.contrib import admin
 
@@ -14,10 +15,22 @@ class Page(models.Model):
     index = models.IntegerField(default=1)
     content = models.TextField()
     featured_image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, blank=True)
-    #menus = models.ManyToManyField(Menu, blank=True)
     published = models.BooleanField(default=True)
+    is_home = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if(self.is_home == True):
+            pages = Page.objects.all()
+            for page in pages:
+                page.is_home = False
+                page.save()
+            self.is_home = True
+        #return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title

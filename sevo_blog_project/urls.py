@@ -19,10 +19,13 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+from pages.views import redirect_view, show_homepage
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("", show_homepage, name="homepage"),
     path("blog/", include("blog.urls")), 
     path("page/", include("pages.urls")),
     path("author/", include("author.urls"))
