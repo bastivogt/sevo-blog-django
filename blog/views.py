@@ -43,14 +43,5 @@ def category_single(request, slug):
 
 
 
-def authors(request):
-        return render(request, "blog/authors.html", {
-        "title": "Post authors",
-    })
 
-
-def author_single(request, slug):
-        return render(request, "blog/author_single.html", {
-        "title": "Post author single",
-    })
 
