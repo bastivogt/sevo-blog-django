@@ -6,11 +6,6 @@ from django.contrib import admin
 from uploaded_media.models import Image
 
 
-class Menu(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
 
 
 class Page(models.Model):
@@ -19,7 +14,7 @@ class Page(models.Model):
     index = models.IntegerField(default=1)
     content = models.TextField()
     featured_image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, blank=True)
-    menus = models.ManyToManyField(Menu, blank=True)
+    #menus = models.ManyToManyField(Menu, blank=True)
     published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -48,4 +43,10 @@ class Page(models.Model):
         return None
     
 
+class Menu(models.Model):
+    name = models.CharField(max_length=100)
+    pages = models.ManyToManyField(Page, blank=True)
+
+    def __str__(self):
+        return self.name
 
