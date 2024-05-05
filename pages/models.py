@@ -21,6 +21,16 @@ class Page(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
+    def is_active_page(self, path, home=False):
+        if home:
+            if self.is_home and path == "/":
+                return True
+            return False
+        
+        return self.title.lower() in path.lower()
+
+
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if(self.is_home == True):

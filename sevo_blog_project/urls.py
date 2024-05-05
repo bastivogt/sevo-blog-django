@@ -30,3 +30,8 @@ urlpatterns = [
     path("page/", include("pages.urls")),
     path("author/", include("author.urls"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header = "Sevo Blog Admin"
+admin.site.site_title = "Sevo Blog"
+admin.site.index_title = "Sevo Blog Admin"
