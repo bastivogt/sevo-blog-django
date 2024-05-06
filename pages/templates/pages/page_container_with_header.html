@@ -15,5 +15,8 @@
             {{ page.content }}
         {% endautoescape %}
     </div>
+    {% if page.is_home %}
+        {% include "pages/partials/_featured_posts.html" %}
+    {% endif %}
 
 {% endblock %}

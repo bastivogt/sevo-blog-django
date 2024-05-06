@@ -1,3 +1,8 @@
+.bg-light-grey {
+    background-color: rgb(247, 247, 247);
+}
+
+
 .section-padding {
     padding-top: 75px;
     padding-bottom: 75px;
@@ -13,11 +18,40 @@
     object-fit: cover;
 }
 
+.card__image-link {
+    overflow: hidden;
+}
+.card__image {
+    object-fit: cover;
+    height: 300px;
+    transform: scale(1.2);
+    filter: brightness(100%);
+    transition: all .3s ease;
+}
+
+.card__image:hover,
+.card__image:focus {
+    filter: brightness(60%);
+    transform: scale(1);
+}
+
+
+
+.post-content {
+    margin-top: -150px;
+    position: relative;
+    background-color: white;
+    padding: 20px;
+}
+
+
 
 
 @media (min-width: 768px) {
     .image-header__image {
         height: 700px;
     }
+
+
 }
 

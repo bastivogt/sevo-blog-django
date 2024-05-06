@@ -1,0 +1,19 @@
+{% comment %} post {% endcomment %}
+<div class="card h-100 shadow">
+    <a class="card__image-link w-100 d-block" href="{% url "blog-post-slug" slug=post.slug %}">
+      <img class="card__image w-100" src="{{ post.featured_image.image.url }}" class="card-img-top" alt="{{ post.featured_image.image.title }}">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">{{ post.title }}</h5>
+        <div class="mb-2">
+          <small>
+            <time>{{ post.created_at|date:"d.m.Y H:i" }} Uhr</time> | 
+            <a href="{% url "author-single-slug" slug=post.author.slug %}">{{ post.author.get_fullname }}</a>
+          </small>
+        </div>
+      <p class="card-text">{{ post.excerpt}}</p>
+    </div>
+    <div class="card-footer">
+      <a class="btn btn-primary" href="{% url "blog-post-slug" slug=post.slug %}">Mehr</a>
+    </div>
+  </div>

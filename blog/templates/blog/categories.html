@@ -1,10 +1,24 @@
 {% extends "base.html" %}
 
 {% block title %}
-    {{ title|title }}
+    {{ author.get_fullname|title }}
 {% endblock %}
 
 
 {% block content %}
-    <h1>{{ title|title }}</h1>
+    <div class="container section-padding">
+        <h1 class="display-1">{{ title|title }}</h1>
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <a href="{% url "blog-category-slug" slug=category.slug %}">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Keine Autoren vorhanden</p>
+        {% endif %}
+    </div>
+
 {% endblock %}

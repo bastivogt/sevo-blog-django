@@ -1,0 +1,16 @@
+<section class="section-padding bg-light-grey">
+    <div class="container">
+        <h2 class="display-3">Featured Posts</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+            {% for post in featured_posts %}
+                <div class="col">
+                    {% include "blog/partials/_posts_item.html" %}
+                </div>
+            {% endfor %}
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center mt-5">
+            <a class="btn btn-primary btn-lg d-block" href="{% url "blog-posts" %}">Alle Posts</a>
+        </div>
+    </div>
+</section>

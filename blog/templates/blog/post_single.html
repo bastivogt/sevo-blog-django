@@ -1,10 +1,48 @@
 {% extends "base.html" %}
 
 {% block title %}
-    {{ title|title }}
+    {{ post.title|title }}
 {% endblock %}
 
 
 {% block content %}
-    <h1>{{ title|title }} id: {{ id }}</h1>
+    <header class="image-header">
+        <img class="image-header__image" src="{{ post.featured_image.image.url }}" alt="{{ post.featured_image.image.title }}">
+    </header>
+    <div class="section-padding">
+        <div class="container">
+            <div class="post-content">
+                <div class="mb-1">
+                    <div>
+                        <small>
+                            <time><b>{{ post.created_at|date:"d.m.Y | H:i" }}</b></time>
+                        </small>
+                    </div>
+                    <div>
+                        <small>
+                            <b>Autor: </b>
+                            <a href="{% url "author-single-slug" slug=post.author.slug %}">{{ post.author.get_fullname }}</a>    
+                        </small>
+                    </div>
+                    <div>
+                        <small>
+                            <b>Kategorien: </b>
+                            {% for category in post.categories.all %}
+                                <a href="{% url "blog-category-slug" slug=category.slug %}">{{ category }}</a>  
+                            {% endfor %}
+                        </small>
+                    </div>
+                </div>
+                <h1 class="display-1">{{ post.title|title }}</h1>
+
+                {% autoescape off %}
+                <div class="mb-5">
+                    {{ post.content }}
+                </div>
+                {% endautoescape %}
+                <hr>
+                <button class="btn btn-primary back-link">Zurück</button>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -3,6 +3,8 @@
         {% for page in pages_main %}
             <li><a class="{% if page.title|lower in request.path or page.is_home and request.path == "/" %}active{% endif %}" href="{% url "pages-page-single-slug" slug=page.slug %}">{{ page.title }}</a></li>
         {% endfor %}
-        <li><a href="{% url "blog-posts" %}">Blog</a></li>
+        <li><a href="{% url "blog-posts" %}">Posts</a></li>
+        <li><a href="{% url "author-index" %}">Autoren</a></li>
+        <li><a href="{% url "blog-categories" %}">Kategorien</a></li>
     </ul>
 </nav>

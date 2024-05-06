@@ -17,7 +17,13 @@
         </ul>
         <ul class="navbar-nav d-flex">
             <li class="nav-item">
-                <a class="nav-link{% if "blog" in request.path %} active{% endif %}"{% if "blog" in request.path %} aria-current="page"{% endif %} href="{% url "blog-posts" %}">Blog</a>
+                <a class="nav-link{% if "post" in request.path %} active{% endif %}"{% if "post" in request.path %} aria-current="page"{% endif %} href="{% url "blog-posts" %}">Posts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if "author" in request.path %} active{% endif %}"{% if "author" in request.path %} aria-current="page"{% endif %} href="{% url "author-index" %}">Autoren</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if "categor" in request.path %} active{% endif %}"{% if "categor" in request.path %} aria-current="page"{% endif %} href="{% url "blog-categories" %}">Katerorien</a>
             </li>
         </ul>
       </div>
