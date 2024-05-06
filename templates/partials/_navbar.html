@@ -1,0 +1,25 @@
+{% comment %} <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark"> {% endcomment %}
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url "homepage" %}">SEVO</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+            {% for page in pages_main %}
+                {% if page.is_home == False %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if page.title|lower in request.path or page.is_home and request.path == "/" %} active{% endif %}"{% if page.title|lower in request.path or page.is_home and request.path == "/" %} aria-current="page"{% endif %} href="{% url "pages-page-single-slug" slug=page.slug %}">{{ page.title|title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <ul class="navbar-nav d-flex">
+            <li class="nav-item">
+                <a class="nav-link{% if "blog" in request.path %} active{% endif %}"{% if "blog" in request.path %} aria-current="page"{% endif %} href="{% url "blog-posts" %}">Blog</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
