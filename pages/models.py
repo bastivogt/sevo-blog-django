@@ -10,6 +10,13 @@ from uploaded_media.models import Image
 
 
 class Page(models.Model):
+
+    class Templates(models.TextChoices):
+        FULL_WIDTH = "Fullwidth"
+        CONTAINER = "Container"
+        FULL_WIDTH_WITH_HEADER = "Fullwidth with header"
+        CONTAINER_WITH_HEADER = "Container with header"
+
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
     index = models.IntegerField(default=1)
@@ -17,6 +24,7 @@ class Page(models.Model):
     featured_image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, blank=True)
     published = models.BooleanField(default=True)
     is_home = models.BooleanField(default=False)
+    template = models.CharField(max_length=100, choices=Templates.choices, default=Templates.CONTAINER)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ page.title|title }}
+{% endblock %}
+
+
+{% block content %}
+    <header class="image-header">
+        <img class="image-header__image" src="{{ page.featured_image.image.url }}" alt="{{ page.featured_image.image.title }}">
+    </header>
+    <div class="container section-padding">
+        <h1 class="display-1">{{ page.title|title }}</h1>
+        {% autoescape off %}
+            {{ page.content }}
+        {% endautoescape %}
+    </div>
+
+{% endblock %}
