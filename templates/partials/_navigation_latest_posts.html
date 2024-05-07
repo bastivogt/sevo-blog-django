@@ -1,0 +1,11 @@
+<nav>
+    {% if latest_posts %}
+        <ul>
+            {% for post in latest_posts %}
+                <li><a class="{% if post.slug|lower in request.path %}active{% endif %}" href="{% url "blog-post-slug" slug=post.slug %}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Keine Posts vorhanden</p>
+    {% endif %}
+</nav>

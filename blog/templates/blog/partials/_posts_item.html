@@ -5,10 +5,15 @@
     </a>
     <div class="card-body">
       <h5 class="card-title">{{ post.title }}</h5>
-        <div class="mb-2">
+        <div class="mb-3">
           <small>
-            <time>{{ post.created_at|date:"d.m.Y H:i" }} Uhr</time> | 
+            <i>
+            am
+            <time>{{ post.created_at|date:"d.m.Y H:i" }} Uhr</time>
+            <br>
+            von 
             <a href="{% url "author-single-slug" slug=post.author.slug %}">{{ post.author.get_fullname }}</a>
+            </i>
           </small>
         </div>
       <p class="card-text">{{ post.excerpt}}</p>

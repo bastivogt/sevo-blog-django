@@ -1,5 +1,5 @@
 from pages.models import Menu
-from blog.models import Category
+from blog.models import Category, Post
 from author.models import Author
 
 def menus_context(request):
@@ -10,10 +10,12 @@ def menus_context(request):
 
     categories = Category.objects.all()
     authors = Author.objects.all()
+    latest_posts = Post.objects.filter(published=True).order_by("-created_at")[:3]
 
     return {
         "pages_main": pages_main,
         "pages_meta": pages_meta, 
         "categories": categories,
-        "authors": authors
+        "authors": authors, 
+        "latest_posts": latest_posts
     }
