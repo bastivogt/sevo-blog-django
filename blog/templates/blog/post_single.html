@@ -48,7 +48,7 @@
                 {% if post.allow_comments %}
                     {% if comments %}
                     <hr>
-                    <div class="comments">
+                    <div class="comments my-5">
                         <h3 class="mb-3">Kommentare:</h3>
                         {% for comment in comments %}
                             {% include "blog/partials/_comment_item.html" %}
@@ -56,7 +56,7 @@
                     </div>
                     {% endif %}
                     <hr>
-                    <div class="comment-form">
+                    <div class="comment-form my-5">
                         <h3 class="mb-3">Kommentar schreiben:</h3>
                         {% include "blog/partials/_comment_form.html" %}
                     </div>

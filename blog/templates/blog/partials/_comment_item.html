@@ -6,26 +6,23 @@
     </div>
 
     <div class="card-body">
-        <div class="mb-2">
-            <small>
-                <i>
-                    <div>
-                        <time>
-                            <b>
-                            {{ comment.created_at|date:"d.m.Y  H:i" }} Uhr
-                            </b>
-                        </time>
-                    </div>
-                    <div>
-                        <a href="mailto:{{ comment.email }}">{{ comment.email }}</a>
-                    </div>
-                </i>
-            </small>
-        </div>
 
-        <p>
             {{ comment.comment }}
-        </p>
+
+    </div>
+    <div class="card-footer">
+        <small>
+            <i>
+                <div>
+                    <time>
+                        {{ comment.created_at|date:"d.m.Y  H:i" }} Uhr
+                    </time>
+                </div>
+                <div>
+                    <a href="mailto:{{ comment.email }}">{{ comment.email }}</a>
+                </div>
+            </i>
+        </small>
     </div>
 </div>
 
