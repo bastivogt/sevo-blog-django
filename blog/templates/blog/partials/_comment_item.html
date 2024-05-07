@@ -1,0 +1,32 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <div>
+            <h5>{{ comment.name }}</h5>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="mb-2">
+            <small>
+                <i>
+                    <div>
+                        <time>
+                            <b>
+                            {{ comment.created_at|date:"d.m.Y  H:i" }} Uhr
+                            </b>
+                        </time>
+                    </div>
+                    <div>
+                        <a href="mailto:{{ comment.email }}">{{ comment.email }}</a>
+                    </div>
+                </i>
+            </small>
+        </div>
+
+        <p>
+            {{ comment.comment }}
+        </p>
+    </div>
+</div>
+
+

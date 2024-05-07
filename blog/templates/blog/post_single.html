@@ -12,37 +12,59 @@
     <div class="section-padding">
         <div class="container">
             <div class="post-content">
-                <div class="mb-1">
-                    <div>
-                        <small>
-                            <time><b>{{ post.created_at|date:"d.m.Y  H:i" }} Uhr</b></time>
-                        </small>
+                <div class="post">
+                    <div class="mb-1">
+                        <i>
+                        <div>
+                            <small>
+                                <time><b>{{ post.created_at|date:"d.m.Y  H:i" }} Uhr</b></time>
+                            </small>
+                        </div>
+                        <div>
+                            <small>
+                                <b>Autor: </b>
+                                <a href="{% url "author-single-slug" slug=post.author.slug %}">{{ post.author.get_fullname }}</a>    
+                            </small>
+                        </div>
+                        <div>
+                            <small>
+                                <b>Kategorien: </b>
+                                {% for category in post.categories.all %}
+                                    <a href="{% url "blog-category-slug" slug=category.slug %}">{{ category }}</a>  
+                                {% endfor %}
+                            </small>
+                        </div>
                     </div>
-                    <div>
-                        <small>
-                            <b>Autor: </b>
-                            <a href="{% url "author-single-slug" slug=post.author.slug %}">{{ post.author.get_fullname }}</a>    
-                        </small>
-                    </div>
-                    <div>
-                        <small>
-                            <b>Kategorien: </b>
-                            {% for category in post.categories.all %}
-                                <a href="{% url "blog-category-slug" slug=category.slug %}">{{ category }}</a>  
-                            {% endfor %}
-                        </small>
-                    </div>
-                </div>
-                <h1 class="display-1">{{ post.title|title }}</h1>
+                    </i>
+                    
+                    <h1 class="display-1">{{ post.title|title }}</h1>
 
-                {% autoescape off %}
-                <div class="mb-5">
-                    {{ post.content }}
+                    {% autoescape off %}
+                    <div class="mb-5">
+                        {{ post.content }}
+                    </div>
+                    {% endautoescape %}
                 </div>
-                {% endautoescape %}
+                {% if post.allow_comments %}
+                    {% if comments %}
+                    <hr>
+                    <div class="comments">
+                        <h3 class="mb-3">Kommentare:</h3>
+                        {% for comment in comments %}
+                            {% include "blog/partials/_comment_item.html" %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <hr>
+                    <div class="comment-form">
+                        <h3 class="mb-3">Kommentar schreiben:</h3>
+                        {% include "blog/partials/_comment_form.html" %}
+                    </div>
+                {% endif %}
                 <hr>
                 <button class="btn btn-primary back-link">Zurück</button>
             </div>
+
         </div>
     </div>
 {% endblock %}

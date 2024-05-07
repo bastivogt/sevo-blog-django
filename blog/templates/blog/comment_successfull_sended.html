@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ title|title }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container section-padding">
+        <h1 class="display-4">{{ title|title }}</h1>
+        <p>
+            {{ text }}
+        </p>
+        <a class="btn btn-primary" href="{% url "blog-post-slug" slug=post.slug %}">Zum Post</a>
+    </div>
+
+{% endblock %}

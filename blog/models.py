@@ -37,6 +37,7 @@ class Post(models.Model):
     featured_image = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True, null=True)
     published = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=False)
+    allow_comments = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -59,4 +60,21 @@ class Post(models.Model):
         return ", ".join(cats_list)
 
     def __str__(self):
-        return f"{self.title} [{self.updated_at}]"
+        return f"#{self.id} - {self.title}"
+    
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, blank=True, null=True, on_delete=models.SET_NULL)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    comment = models.TextField()
+    published = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    def get_post_str(self):
+        return f"#{self.post.id} - {self.post.title}"
+
+
+    def __str__(self):
+        return f"{self.name}, {self.email}"

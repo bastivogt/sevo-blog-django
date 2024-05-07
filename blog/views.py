@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 from . import models
+from . import forms
 
 
 # Create your views here.
@@ -27,7 +30,38 @@ def post_single_id(request, id):
 
 def post_single_slug(request, slug):
     post = get_object_or_404(models.Post, slug=slug)
+    comments = post.comment_set.filter(published=True).order_by("-created_at")
+
+    if request.method == "POST":
+        form = forms.CommentForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            comment = models.Comment(
+                name=form.cleaned_data["name"],
+                email = form.cleaned_data["email"],
+                post = post,
+                comment = form.cleaned_data["comment"]
+            )
+            comment.save()
+            #url = reverse("blog-post-slug", args=[post.slug])
+            url = reverse("blog-comment-successfull-sended-slug", args=[post.slug])
+            return HttpResponseRedirect(url)
+
+    else:
+        form = forms.CommentForm()
+
     return render(request, "blog/post_single.html", {
+        "post": post,
+        "comments": comments, 
+        "form": form
+    })
+
+
+def comment_successfull_sended(request, slug):
+    post = get_object_or_404(models.Post, slug=slug, published=True)
+    return render(request, "blog/comment_successfull_sended.html", {
+        "title": "Kommentar erfolgreich gesendet",
+        "text": "Dein Kommentar wird erst überprüft, bevor er erscheint!", 
         "post": post
     })
 
