@@ -1,0 +1,11 @@
+<nav>
+    {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li><a class="{% if category.name|lower in request.path %}active{% endif %}" href="{% url "blog-category-slug" slug=category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Keine Kategorien vorhanden</p>
+    {% endif %}
+</nav>

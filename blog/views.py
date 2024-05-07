@@ -14,7 +14,7 @@ def index(request):
 def posts(request):
     posts = models.Post.objects.filter(published=True).order_by("-created_at")
     return render(request, "blog/posts.html", {
-        "title": "All posts",
+        "title": "Alle Posts",
         "posts": posts
     })
 

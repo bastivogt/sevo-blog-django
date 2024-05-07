@@ -1,0 +1,11 @@
+<nav>
+    {% if authors %}
+        <ul>
+            {% for author in authors %}
+                <li><a class="{% if author.name|lower in request.path %}active{% endif %}" href="{% url "author-single-slug" slug=author.slug %}">{{ author.get_fullname }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Keine Autoren vorhanden</p>
+    {% endif %}
+</nav>
