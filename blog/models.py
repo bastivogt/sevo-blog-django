@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib import admin
 
+from tinymce import models as tinymce_models
+
 from django.utils.html import format_html
 
 from uploaded_media.models import Image
@@ -32,7 +34,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     categories = models.ManyToManyField(Category, blank=True)
-    content = models.TextField()
+    content = tinymce_models.HTMLField()
     excerpt = models.TextField(max_length=255, blank=True)
     featured_image = models.ForeignKey(Image, on_delete=models.SET_NULL, blank=True, null=True)
     published = models.BooleanField(default=True)

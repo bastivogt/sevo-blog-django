@@ -2,6 +2,8 @@ from typing import Iterable
 from django.db import models
 from django.contrib import admin
 
+from tinymce import models as tinymce_models
+
 # Create your models here.
 
 from uploaded_media.models import Image
@@ -20,7 +22,7 @@ class Page(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
     index = models.IntegerField(default=1)
-    content = models.TextField()
+    content = tinymce_models.HTMLField()
     featured_image = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, blank=True)
     published = models.BooleanField(default=True)
     is_home = models.BooleanField(default=False)
