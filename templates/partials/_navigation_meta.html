@@ -1,7 +1,7 @@
 <nav>
-    <ul>
+    <ul class="list-unstyled">
         {% for page in pages_meta %}
-            <li><a class="{% if page.title|lower in request.path or page.is_home and request.path == "/" %}active{% endif %}" href="{% url "pages-page-single-slug" slug=page.slug %}">{{ page.title }}</a></li>
+            <li><a class="text-decoration-none {% if page.title|lower in request.path or page.is_home and request.path == "/" %}active{% endif %}" href="{% url "pages-page-single-slug" slug=page.slug %}">{{ page.title }}</a></li>
         {% endfor %}
     </ul>
 </nav>

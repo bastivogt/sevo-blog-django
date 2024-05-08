@@ -1,8 +1,8 @@
 <nav>
     {% if authors %}
-        <ul>
+        <ul class="list-unstyled">
             {% for author in authors %}
-                <li><a class="{% if author.name|lower in request.path %}active{% endif %}" href="{% url "author-single-slug" slug=author.slug %}">{{ author.get_fullname }}</a></li>
+                <li><a class="text-decoration-none {% if author.name|lower in request.path %}active{% endif %}" href="{% url "author-single-slug" slug=author.slug %}">{{ author.get_fullname }}</a></li>
             {% endfor %}
         </ul>
     {% else %}

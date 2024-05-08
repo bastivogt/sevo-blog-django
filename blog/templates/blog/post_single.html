@@ -49,7 +49,7 @@
                 {% if post.allow_comments %}
                     {% if comments %}
                     <hr>
-                    <div class="comments my-5">
+                    <div class="comments my-5 vstack gap-4">
                         <h3 class="mb-3">Kommentare:</h3>
                         {% for comment in comments %}
                             {% include "blog/partials/_comment_item.html" %}

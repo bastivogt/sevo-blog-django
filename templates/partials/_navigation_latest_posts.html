@@ -1,8 +1,8 @@
 <nav>
     {% if latest_posts %}
-        <ul>
+        <ul class="list-unstyled">
             {% for post in latest_posts %}
-                <li><a class="{% if post.slug|lower in request.path %}active{% endif %}" href="{% url "blog-post-slug" slug=post.slug %}">{{ post.title }}</a></li>
+                <li><a class="text-decoration-none {% if post.slug|lower in request.path %}active{% endif %}" href="{% url "blog-post-slug" slug=post.slug %}">{{ post.title }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
