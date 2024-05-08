@@ -39,7 +39,7 @@ def redirect_view(request):
 
 def show_homepage(request):
     page = get_object_or_404(models.Page, is_home=True, published=True)
-    featured_posts = Post.objects.filter(is_featured=True).order_by("-updated_at")
+    featured_posts = Post.objects.filter(is_featured=True, published=True).order_by("-created_at")
 
     template_path = ""
     if page.template == page.Templates.CONTAINER:
