@@ -41,9 +41,9 @@
                     <h1 class="display-1">{{ post.title }}</h1>
 
                     {% autoescape off %}
-                    <div class="mb-5">
-                        {{ post.content }}
-                    </div>
+                        <div class="mb-5">
+                            {{ post.content }}
+                        </div>
                     {% endautoescape %}
                 </div>
                 {% if post.allow_comments %}

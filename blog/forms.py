@@ -1,4 +1,5 @@
 from django import forms
+from . import models
 
 
 class CommentForm(forms.Form):
@@ -11,3 +12,6 @@ class CommentForm(forms.Form):
         self.fields["name"].widget.attrs["class"] = "form-control"
         self.fields["email"].widget.attrs["class"] = "form-control"
         self.fields["comment"].widget.attrs["class"] = "form-control"
+
+
+

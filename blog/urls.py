@@ -9,5 +9,5 @@ urlpatterns = [
     path("post/<slug:slug>", views.post_single_slug, name="blog-post-slug"), 
     path("categories", views.categories, name="blog-categories"),
     path("category/<slug:slug>", views.category_single, name="blog-category-slug"), 
-    path("comment-sended/<slug:slug>", views.comment_successfull_sended, name="blog-comment-successfull-sended-slug")
+    path("comment-sended/<slug:slug>", views.comment_successfull_sended, name="blog-comment-successfull-sended-slug"),
 ]
